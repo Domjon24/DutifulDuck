@@ -6,6 +6,7 @@ import {Flex} from '../styles/flex';
 import { useState } from "react";
 import axios from "axios";
 import { keyframes } from '@emotion/react';
+import Image from 'next/image';
 
 export const Hero = () => {
   const [response, setResponse] = useState<string>('');
@@ -92,7 +93,7 @@ export const Hero = () => {
             size={'$lg'}
             span
           >
-            Enter a command for the dutiful duck. All commands are 1 word. If you don't get it right, the AI helper will guide you. Enter them all for an achievement. Check back later for updates and more commands.
+            Enter a command for the dutiful duck. All commands are 1 word. If you do not get it right, the AI helper will guide you. Enter them all for an achievement. Check back later for updates and more commands.
           </Text>
 
           <Flex css={{ gap: '$8', pt: '$4' }} wrap={'wrap'}>
@@ -122,16 +123,25 @@ export const Hero = () => {
         <Box
           css={{
             '& img': {
+               position: 'relative',
               width: '600px',
               height: '900px',
               objectFit: 'contain',
             },
           }}
         >
-          <img
+          {/* <img
             src={`/images/${animation}.gif`}
             alt={animation || 'walking duck'}
-          />
+          /> */}
+
+          <Image
+            src={`/images/${animation}.gif`}
+            alt={animation || 'walking duck'}
+            width={600}
+            height={900}
+            style={{ objectFit: 'contain' }}
+            />
         </Box>
       </Flex>
 
