@@ -1,0 +1,11 @@
+.walk {
+    animation: walk 5s stops(6) infinite;
+}
+@keyframes walk {
+    from {
+        background-position: center 0%;
+    }
+    to {
+        background-position: center 100%
+    }
+}
