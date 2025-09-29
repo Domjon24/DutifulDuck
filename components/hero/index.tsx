@@ -15,8 +15,8 @@ export const Hero = () => {
   const [animation, setAnimation] = useState<string>('walk'); //change to gif
 
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setValue(e.target.value);
+//   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+//     setValue(e.target.value);
 
 
  const handleSubmit = async () => {
@@ -97,7 +97,7 @@ export const Hero = () => {
           </Text>
 
           <Flex css={{ gap: '$8', pt: '$4' }} wrap={'wrap'}>
-            <Input placeholder="Enter a command" size="lg" onChange={onChange} />
+            <Input placeholder="Enter a command" size="lg"  onChange={(e) => setValue(e.target.value)} />
             <Button onClick={handleSubmit}>Enter</Button>
           </Flex>
 
