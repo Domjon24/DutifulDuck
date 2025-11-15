@@ -1,5 +1,5 @@
 import {Button, Divider, Input, Text} from '@nextui-org/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {CheckIcon} from '../icons/CheckIcon';
 import {Box} from '../styles/box';
 import {Flex} from '../styles/flex';
@@ -17,6 +17,7 @@ export const Hero = () => {
 
 //   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
 //     setValue(e.target.value);
+
 
 
  const handleSubmit = async () => {
@@ -104,6 +105,8 @@ export const Hero = () => {
 
           <Flex css={{ gap: '$8', pt: '$4' }} wrap={'wrap'}>
             <Input placeholder="Enter a command" size="lg"  onChange={(e) => setValue(e.target.value)} />
+            
+            {/* <script>console.log('alert('promise not to make fun of my animations...')');</script> */}
             <Button onClick={handleSubmit}>Enter</Button>
           </Flex>
 
@@ -134,10 +137,10 @@ export const Hero = () => {
 
             '& img': {
               position: 'relative',
-              width: '600px',
-              height: '900px',
+              width: '450px',
+              height: '450px',
               objectFit: 'contain',
-              marginTop: '-15rem',  
+              // marginTop: '1rem',  
               marginLeft: '5rem',   
               paddingRight: '5rem',  
             },
@@ -152,8 +155,8 @@ export const Hero = () => {
           <Image
             src={`/images/${animation}.gif`}
             alt={animation || 'walking duck'}
-            width={600}
-            height={900}
+            width={400}
+            height={400}
             style={{ objectFit: 'contain'}}
             />
         </Box>

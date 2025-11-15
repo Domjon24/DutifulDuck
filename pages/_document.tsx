@@ -32,8 +32,10 @@ class MyDocument extends Document {
             <Head>{CssBaseline.flush()}</Head>
 
             <body>
+                
                <Main />
                <NextScript />
+              
             </body>
          </Html>
       );
