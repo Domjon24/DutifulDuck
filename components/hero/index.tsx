@@ -23,28 +23,34 @@ export const Hero = () => {
     setLoading(true); 
     setResponse("Thinking..."); // Display "Thinking..." while processing
   try {
-    const res = await axios.post("/api/hello", { question: value });
-    const message = res.data.choices[0].message.content;
+    // const res = await axios.post("/api/hello", { question: value });
+    // const message = res.data.choices[0].message.content;
+    // setResponse(message);
+     const res = await axios.post("/api/hello", { question: value });
+
+    const message = res.data.choices?.[0]?.message?.content ?? "";
+    const command = res.data.matchedCommand ?? null;
     setResponse(message);
 
-    if (res.data.matchedCommand) {
-      setAnimation(res.data.matchedCommand); // trigger animation
+    // if (res.data.matchedCommand) {
+    //   setAnimation(res.data.matchedCommand);
 
-      // reset to default walk.png
-      setTimeout(() => {
-        setAnimation('walk');
-      }, 3000);
+     if (command) {
+      setAnimation(command);
 
+      // Reset back to walk after 3 seconds
+      setTimeout(() => setAnimation("walk"), 3000);
     } else {
-      setAnimation('walk'); // no animation
+      setAnimation("walk");
     }
+
   } catch (err) {
     console.error(err);
     setResponse("Error connecting to AI.");
-    } finally {
-      setLoading(false); // loading set to false after bot sends msg
-    }
-  };
+  } finally {
+    setLoading(false);
+  }
+};
 //     const walkAnimation = keyframes` //walking animation loop
 //     0% {
 //       background-position: center 0%;
@@ -122,14 +128,22 @@ export const Hero = () => {
         {/* gigf Box */}
         <Box
           css={{
+            display: 'flex',
+            alignItems: 'flex-start',   
+            justifyContent: 'center',
+
             '& img': {
-               position: 'relative',
+              position: 'relative',
               width: '600px',
               height: '900px',
               objectFit: 'contain',
+              marginTop: '-15rem',  
+              marginLeft: '5rem',   
+              paddingRight: '5rem',  
             },
           }}
         >
+
           {/* <img
             src={`/images/${animation}.gif`}
             alt={animation || 'walking duck'}
@@ -140,7 +154,7 @@ export const Hero = () => {
             alt={animation || 'walking duck'}
             width={600}
             height={900}
-            style={{ objectFit: 'contain' }}
+            style={{ objectFit: 'contain'}}
             />
         </Box>
       </Flex>

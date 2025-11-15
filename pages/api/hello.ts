@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const filePath = path.join(process.cwd(), "pages/api/commands.txt");
     const fileContent = await fs.readFile(filePath, "utf-8");
 
-    const commands = ["leap"];
+    const commands = ["leap", "skate", "walk", "eat"];
     const normalizedInput = question.trim().toLowerCase();
     const matchedCommand = commands.find((cmd) =>
       normalizedInput.includes(cmd)
